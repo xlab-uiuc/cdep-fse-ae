@@ -35,19 +35,19 @@ To run the Docker image, there is one CLI option:
 * `-a <arg>`: where <arg> is a comma-separated list of elements in `hdfs`, `mapreduce`, `yarn`, `hadoop_common`, 
                      `hadoop_tools`, `hbase`, `alluxio`, `zookeeper`, `spark`
 
-One example running command is as follows:
+An example running command is as follows:
 ```
+$ git clone https://github.com/xlab-uiuc/cdep-fse.git
+$ cd cdep-fse
 $ ./dockerrun.sh -a hdfs,mapreduce
 ```
-Note that multiple applications should be seperated by `,`.
-
 The results will be stored at `/tmp/output/cDep_result.csv`.
 
 **The analysis could take several tens of minutes (so be patient).**
 
 ### 1.2 Build Docker Image Locally
 
-We provide the Dockerfile (under the root directory) as well, with which you could build the docker image locally and run the program.
+We provide the Dockerfile as well, with which you could build the docker image locally and run the program.
 
 To build the docker image:
 ```
@@ -56,7 +56,7 @@ $ cd cdep-fse
 $ docker build -t cdep/cdep:1.0 .
 ```
 
-Then the running command is same as above. One example running command is:
+Then the running command is same as above. An example running command is:
 ```
 $ ./dockerrun.sh -a hdfs,mapreduce
 ```
@@ -64,7 +64,7 @@ $ ./dockerrun.sh -a hdfs,mapreduce
 ### 1.3 Building cDep in Your Own Environment
 
 We build cDep using Java(TM) SE Runtime Environment (build 12.0.2+10) and Apache Maven 3.6.1.
-We did not guarantee you can build with other Java versions.
+We did not test on other Java versions.
 
 First, clone the repository,
 ```
@@ -94,7 +94,7 @@ $ ./run.sh -a hdfs,mapreduce
  
 **All the results in the paper, including both the study dataset and the cDep results can be reproduced.**
 
-The cDep results can be reproduced by running cDep:
+The cDep results can be reproduced by running cDep and it could take up to 2 hours:
 ```
 $ ./dockerrun.sh  -a  hdfs,mapreduce,yarn,hadoop_common,hadoop_tools,hbase,alluxio,zookeeper,spark
 ```
@@ -102,7 +102,7 @@ $ ./dockerrun.sh  -a  hdfs,mapreduce,yarn,hadoop_common,hadoop_tools,hbase,allux
 The `cDep_result.csv` is in the format of:
 `["parameter A","parameter B","dependency type","java class","java method","jimple stmt"]`
 
-The output means `parmaeter A` and `parmaeter B` have a `dependency type`. And that dependency relation is identified in the `jimple stmt` of a certain `java method` and `java class`.
+The output means `parameter A` and `parameter B` have a `dependency type`. And that dependency relation is identified in the `jimple stmt` of a certain `java method` and `java class`.
 
 The following shows an example of a dependency cDep extracts from MapReduce:
 
@@ -128,7 +128,7 @@ The two parameters, `mapreduce.output.fileoutputformat.compress` and `mapreduce.
  
 <br>
  
-We also replease all the datasets included in the paper under the `dataset` directory.
+We also release all the dataset included in the paper under the `dataset` directory.
 
 ### 3.1 Configuration Dependency Dataset
 
@@ -145,7 +145,7 @@ The data sheets provide detailed labels of the analysis results presented in our
 
 ### 3.2 cDep Findings
 
-The found dependency cases from cDep could be found at `cDep_result`.
+The found dependency cases from cDep can be found at `cDep_result`.
 It contains the following two files:
 * `intra.csv` : Intra-component dependencies in each individual component of the Hadoop-based stack;
 * `inter.csv` : Inter-component dependencies across components of the Hadoop-based stack;
@@ -164,7 +164,7 @@ The following graph shows the end-to-end workflow of cDep:
 
 <br>
 
-The source code of `cdep` are placed under the `src/main/java` directory.
+The source code of `cdep` is placed under the `src/main/java` directory.
 
 It contains the following main modules:
 * `configinterface` implements the configuration interface methods to read configuration values in different projects;
@@ -249,7 +249,7 @@ public static boolean shouldRMFailFast(Configuration conf) {
 
 ### 5.5 Behavioral Dependency
 
-The first and second parameters work together to determine an ip address.
+The first and second parameters work together to determine an IP address.
 1. `fs.ftp.host`
 2. `fs.ftp.host.port`
 
