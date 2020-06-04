@@ -52,7 +52,7 @@ We provide the Dockerfile (under the root directory) as well, with which you cou
 To build the docker image:
 ```
 $ git clone https://github.com/xlab-uiuc/cdep-fse.git
-$ cd cdep
+$ cd cdep-fse
 $ docker build -t cdep/cdep:1.0 .
 ```
 
