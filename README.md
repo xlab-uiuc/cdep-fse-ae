@@ -32,7 +32,7 @@ The cDep Docker image is hosted on https://hub.docker.com/repository/docker/cdep
 
 To run the Docker image, there is one CLI option:
 
-* `-a <arg>`: The supported applications are `hdfs`, `mapreduce`, `yarn`, `hadoop_common`, 
+* `-a <arg>`: where <arg> is a comma-separated list of elements in `hdfs`, `mapreduce`, `yarn`, `hadoop_common`, 
                      `hadoop_tools`, `hbase`, `alluxio`, `zookeeper`, `spark`
 
 One example running command is as follows:
