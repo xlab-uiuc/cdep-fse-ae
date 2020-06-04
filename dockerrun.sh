@@ -34,4 +34,4 @@ if [ -z "${target}" ]; then
     exit 1
 fi
 
-docker run -m 12GB -e TARGET=$target -v /tmp/output:/tmp/output cdep/cdep:1.0
+docker run --oom-kill-disable -e TARGET=$target -v /tmp/output:/tmp/output cdep/cdep:1.0
