@@ -154,7 +154,7 @@ All the data sheets are in the format of CSV, with the first row describing the 
 
 ----
 
-## 4. Code Walkthrough
+## 4. Code Structure
 
 The following graph shows the end-to-end workflow of cDep:
 
