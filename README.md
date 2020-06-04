@@ -69,7 +69,7 @@ We did not guarantee you can build with other Java versions.
 First, clone the repository,
 ```
 $ git clone https://github.com/xlab-uiuc/cdep-fse.git
-$ cd cdep
+$ cd cdep-fse
 ```
 
 Second, build cDep (we use Maven as the build tool for cDep)
