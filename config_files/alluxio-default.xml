@@ -1,0 +1,1666 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+	<property>
+		<name> alluxio.conf.dir</name>
+		<value>${alluxio.home}/conf</value>
+		<description>The directory containing files used to configure Alluxio. Note: This property must be specified as a JVM property; it is not accepted in alluxio-site.properties.</description>
+	</property>
+	<property>
+		<name> alluxio.debug</name>
+		<value>false</value>
+		<description>Set to true to enable debug mode which has additional logging and info in the Web UI.</description>
+	</property>
+	<property>
+		<name> alluxio.extensions.dir</name>
+		<value>${alluxio.home}/extensions</value>
+		<description>The directory containing Alluxio extensions.</description>
+	</property>
+	<property>
+		<name> alluxio.fuse.cached.paths.max</name>
+		<value>500</value>
+		<description>Maximum number of Alluxio paths to cache for FUSE conversion.</description>
+	</property>
+	<property>
+		<name> alluxio.fuse.debug.enabled</name>
+		<value>false</value>
+		<description>Run FUSE in debug mode, and have the fuse process log every FS request.</description>
+	</property>
+	<property>
+		<name> alluxio.fuse.fs.name</name>
+		<value>alluxio-fuse</value>
+		<description>The FUSE file system name.</description>
+	</property>
+	<property>
+		<name> alluxio.fuse.maxwrite.bytes</name>
+		<value>128KB</value>
+		<description>Maximum granularity of write operations, capped by the kernel to 128KB max (as of Linux 3.16.0).</description>
+	</property>
+	<property>
+		<name> alluxio.home</name>
+		<value>/opt/alluxio</value>
+		<description>Alluxio installation directory.</description>
+	</property>
+	<property>
+		<name> alluxio.jvm.monitor.info.threshold</name>
+		<value>1sec</value>
+		<description>Extra sleep time longer than this threshold, log INFO.</description>
+	</property>
+	<property>
+		<name> alluxio.jvm.monitor.sleep.interval</name>
+		<value>1sec</value>
+		<description>The time for the JVM monitor thread to sleep.</description>
+	</property>
+	<property>
+		<name> alluxio.jvm.monitor.warn.threshold</name>
+		<value>10sec</value>
+		<description>Extra sleep time longer than this threshold, log WARN.</description>
+	</property>
+	<property>
+		<name> alluxio.locality.compare.node.ip</name>
+		<value>false</value>
+		<description>Whether try to resolve the node IP address for locality checking</description>
+	</property>
+	<property>
+		<name> alluxio.locality.node</name>
+		<value></value>
+		<description>Value to use for determining node locality</description>
+	</property>
+	<property>
+		<name> alluxio.locality.order</name>
+		<value>node,rack</value>
+		<description>Ordering of locality tiers</description>
+	</property>
+	<property>
+		<name> alluxio.locality.rack</name>
+		<value></value>
+		<description>Value to use for determining rack locality</description>
+	</property>
+	<property>
+		<name> alluxio.locality.script</name>
+		<value>alluxio-locality.sh</value>
+		<description>A script to determine tiered identity for locality checking</description>
+	</property>
+	<property>
+		<name> alluxio.logger.type</name>
+		<value>Console</value>
+		<description>The type of logger.</description>
+	</property>
+	<property>
+		<name> alluxio.logs.dir</name>
+		<value>${alluxio.work.dir}/logs</value>
+		<description>The path to store log files. Note: This property must be specified as a JVM property; it is not accepted in alluxio-site.properties.</description>
+	</property>
+	<property>
+		<name> alluxio.logserver.hostname</name>
+		<value></value>
+		<description>The hostname of Alluxio logserver. Note: This property must be specified as a JVM property; it is not accepted in alluxio-site.properties.</description>
+	</property>
+	<property>
+		<name> alluxio.logserver.logs.dir</name>
+		<value>${alluxio.work.dir}/logs</value>
+		<description>Default location for remote log files. Note: This property must be specified as a JVM property; it is not accepted in alluxio-site.properties.</description>
+	</property>
+	<property>
+		<name> alluxio.logserver.port</name>
+		<value>45600</value>
+		<description>Default port number to receive logs from alluxio servers. Note: This property must be specified as a JVM property; it is not accepted in alluxio-site.properties.</description>
+	</property>
+	<property>
+		<name> alluxio.logserver.threads.max</name>
+		<value>2048</value>
+		<description>The maximum number of threads used by logserver to service logging requests.</description>
+	</property>
+	<property>
+		<name> alluxio.logserver.threads.min</name>
+		<value>512</value>
+		<description>The minimum number of threads used by logserver to service logging requests.</description>
+	</property>
+	<property>
+		<name> alluxio.metrics.conf.file</name>
+		<value>${alluxio.conf.dir}/metrics.properties</value>
+		<description>The file path of the metrics system configuration file. By default it is `metrics.properties` in the `conf` directory.</description>
+	</property>
+	<property>
+		<name> alluxio.network.host.resolution.timeout</name>
+		<value>5sec</value>
+		<description>During startup of the Master and Worker processes Alluxio needs to ensure that they are listening on externally resolvable and reachable host names. To do this, Alluxio will automatically attempt to select an appropriate host name if one was not explicitly specified. This represents the maximum amount of time spent waiting to determine if a candidate host name is resolvable over the network.</description>
+	</property>
+	<property>
+		<name> alluxio.network.netty.heartbeat.timeout</name>
+		<value>30sec</value>
+		<description>The amount of time the server will wait before closing a netty connection if there has not been any incoming traffic. The client will periodically heartbeat when there is no activity on a connection. This value should be the same on the clients and server.</description>
+	</property>
+	<property>
+		<name> alluxio.network.thrift.frame.size.bytes.max</name>
+		<value>16MB</value>
+		<description>(Experimental) The largest allowable frame size used for Thrift RPC communication.</description>
+	</property>
+	<property>
+		<name> alluxio.proxy.s3.deletetype</name>
+		<value>ALLUXIO_AND_UFS</value>
+		<description>Delete type when deleting buckets and objects through S3 API. Valid options are `ALLUXIO_AND_UFS` (delete both in Alluxio and UFS), `ALLUXIO_ONLY` (delete only the buckets or objects in Alluxio namespace).</description>
+	</property>
+	<property>
+		<name> alluxio.proxy.s3.multipart.temporary.dir.suffix</name>
+		<value>_s3_multipart_tmp</value>
+		<description>Suffix for the directory which holds parts during a multipart upload.</description>
+	</property>
+	<property>
+		<name> alluxio.proxy.s3.writetype</name>
+		<value>CACHE_THROUGH</value>
+		<description>Write type when creating buckets and objects through S3 API. Valid options are `MUST_CACHE` (write will only go to Alluxio and must be stored in Alluxio), `CACHE_THROUGH` (try to cache, write to UnderFS synchronously), `THROUGH` (no cache, write to UnderFS synchronously).</description>
+	</property>
+	<property>
+		<name> alluxio.proxy.stream.cache.timeout</name>
+		<value>1hour</value>
+		<description>The timeout for the input and output streams cache eviction in the proxy.</description>
+	</property>
+	<property>
+		<name> alluxio.proxy.web.bind.host</name>
+		<value>0.0.0.0</value>
+		<description>The hostname that the Alluxio proxy's web server runs on. See multi-homed networks.</description>
+	</property>
+	<property>
+		<name> alluxio.proxy.web.hostname</name>
+		<value></value>
+		<description>The hostname Alluxio proxy's web UI binds to.</description>
+	</property>
+	<property>
+		<name> alluxio.proxy.web.port</name>
+		<value>39999</value>
+		<description>The port Alluxio proxy's web UI runs on.</description>
+	</property>
+	<property>
+		<name> alluxio.site.conf.dir</name>
+		<value>${alluxio.conf.dir}/,${user.home}/.alluxio/,/etc/alluxio/</value>
+		<description>Comma-separated search path for alluxio-site.properties. Note: This property must be specified as a JVM property; it is not accepted in alluxio-site.properties.</description>
+	</property>
+	<property>
+		<name> alluxio.test.mode</name>
+		<value>false</value>
+		<description>Flag used only during tests to allow special behavior.</description>
+	</property>
+	<property>
+		<name> alluxio.tmp.dirs</name>
+		<value>/tmp</value>
+		<description>The path(s) to store Alluxio temporary files, use commas as delimiters. If multiple paths are specified, one will be selected at random per temporary file. Currently, only files to be uploaded to object stores are stored in these paths.</description>
+	</property>
+	<property>
+		<name> alluxio.underfs.address</name>
+		<value>${alluxio.work.dir}/underFSStorage</value>
+		<description>Alluxio directory in the under file system.</description>
+	</property>
+	<property>
+		<name> alluxio.underfs.allow.set.owner.failure</name>
+		<value>false</value>
+		<description>Whether to allow setting owner in UFS to fail. When set to true, it is possible file or directory owners diverge between Alluxio and UFS.</description>
+	</property>
+	<property>
+		<name> alluxio.underfs.gcs.owner.id.to.username.mapping</name>
+		<value></value>
+		<description>Optionally, specify a preset gcs owner id to Alluxio username static mapping in the format &quot;id1=user1;id2=user2&quot;. The Google Cloud Storage IDs can be found at the console address https://console.cloud.google.com/storage/settings . Please use the &quot;Owners&quot; one.</description>
+	</property>
+	<property>
+		<name> alluxio.underfs.hdfs.configuration</name>
+		<value>${alluxio.conf.dir}/core-site.xml:${alluxio.conf.dir}/hdfs-site.xml</value>
+		<description>Location of the HDFS configuration file.</description>
+	</property>
+	<property>
+		<name> alluxio.underfs.hdfs.impl</name>
+		<value>org.apache.hadoop.hdfs.DistributedFileSystem</value>
+		<description>The implementation class of the HDFS as the under storage system.</description>
+	</property>
+	<property>
+		<name> alluxio.underfs.hdfs.prefixes</name>
+		<value>hdfs://,glusterfs:///,maprfs:///</value>
+		<description>Optionally, specify which prefixes should run through the HDFS implementation of UnderFileSystem. The delimiter is any whitespace and/or ','.</description>
+	</property>
+	<property>
+		<name> alluxio.underfs.hdfs.remote</name>
+		<value>false</value>
+		<description>Boolean indicating whether or not the under storage worker nodes are remote with respect to Alluxio worker nodes. If set to true, Alluxio will not attempt to discover locality information from the under storage because locality is impossible. This will improve performance. The default value is false.</description>
+	</property>
+	<property>
+		<name> alluxio.underfs.listing.length</name>
+		<value>1000</value>
+		<description>The maximum number of directory entries to list in a single query to under file system. If the total number of entries is greater than the specified length, multiple queries will be issued.</description>
+	</property>
+	<property>
+		<name> alluxio.underfs.object.store.mount.shared.publicly</name>
+		<value>false</value>
+		<description>Whether or not to share object storage under storage system mounted point with all Alluxio users. Note that this configuration has no effect on HDFS nor local UFS.</description>
+	</property>
+	<property>
+		<name> alluxio.underfs.object.store.read.retry.base.sleep</name>
+		<value>50ms</value>
+		<description>Block reads from an object store automatically retry for transient errors with an exponential backoff. This property determines the base time in the exponential backoff.</description>
+	</property>
+	<property>
+		<name> alluxio.underfs.object.store.read.retry.max.num</name>
+		<value>20</value>
+		<description>Block reads from  an object store automatically retry for transient errors with an exponential backoff. This property determines the maximum number of retries.</description>
+	</property>
+	<property>
+		<name> alluxio.underfs.object.store.read.retry.max.sleep</name>
+		<value>30sec</value>
+		<description>Block reads from an object store automatically retry for transient errors with an exponential backoff. This property determines the maximum wait time in the backoff.</description>
+	</property>
+	<property>
+		<name> alluxio.underfs.object.store.service.threads</name>
+		<value>20</value>
+		<description>The number of threads in executor pool for parallel object store UFS operations.</description>
+	</property>
+	<property>
+		<name> alluxio.underfs.oss.connection.max</name>
+		<value>1024</value>
+		<description>The maximum number of OSS connections.</description>
+	</property>
+	<property>
+		<name> alluxio.underfs.oss.connection.timeout</name>
+		<value>50sec</value>
+		<description>The timeout when connecting to OSS.</description>
+	</property>
+	<property>
+		<name> alluxio.underfs.oss.connection.ttl</name>
+		<value>-1</value>
+		<description>The TTL of OSS connections in ms.</description>
+	</property>
+	<property>
+		<name> alluxio.underfs.oss.socket.timeout</name>
+		<value>50sec</value>
+		<description>The timeout of OSS socket.</description>
+	</property>
+	<property>
+		<name> alluxio.underfs.s3.admin.threads.max</name>
+		<value>20</value>
+		<description>The maximum number of threads to use for metadata operations when communicating with S3. These operations may be fairly concurrent and frequent but should not take much time to process.</description>
+	</property>
+	<property>
+		<name> alluxio.underfs.s3.disable.dns.buckets</name>
+		<value>false</value>
+		<description>Optionally, specify to make all S3 requests path style.</description>
+	</property>
+	<property>
+		<name> alluxio.underfs.s3.endpoint</name>
+		<value></value>
+		<description>Optionally, to reduce data latency or visit resources which are separated in different AWS regions, specify a regional endpoint to make aws requests. An endpoint is a URL that is the entry point for a web service. For example, s3.cn-north-1.amazonaws.com.cn is an entry point for the Amazon S3 service in beijing region.</description>
+	</property>
+	<property>
+		<name> alluxio.underfs.s3.owner.id.to.username.mapping</name>
+		<value></value>
+		<description>Optionally, specify a preset s3 canonical id to Alluxio username static mapping, in the format &quot;id1=user1;id2=user2&quot;. The AWS S3 canonical ID can be found at the console address https://console.aws.amazon.com/iam/home?#security_credential . Please expand the &quot;Account Identifiers&quot; tab and refer to &quot;Canonical User ID&quot;.</description>
+	</property>
+	<property>
+		<name> alluxio.underfs.s3.proxy.host</name>
+		<value></value>
+		<description>Optionally, specify a proxy host for communicating with S3.</description>
+	</property>
+	<property>
+		<name> alluxio.underfs.s3.proxy.port</name>
+		<value></value>
+		<description>Optionally, specify a proxy port for communicating with S3.</description>
+	</property>
+	<property>
+		<name> alluxio.underfs.s3.threads.max</name>
+		<value>40</value>
+		<description>The maximum number of threads to use for communicating with S3 and the maximum number of concurrent connections to S3. Includes both threads for data upload and metadata operations. This number should be at least as large as the max admin threads plus max upload threads.</description>
+	</property>
+	<property>
+		<name> alluxio.underfs.s3.upload.threads.max</name>
+		<value>20</value>
+		<description>The maximum number of threads to use for uploading data to S3 for multipart uploads. These operations can be fairly expensive, so multiple threads are encouraged. However, this also splits the bandwidth between threads, meaning the overall latency for completing an upload will be higher for more threads.</description>
+	</property>
+	<property>
+		<name> alluxio.underfs.s3a.consistency.timeout</name>
+		<value>1min</value>
+		<description>The duration to wait for metadata consistency from the under storage. This is only used by internal Alluxio operations which should be successful, but may appear unsuccessful due to eventual consistency.</description>
+	</property>
+	<property>
+		<name> alluxio.underfs.s3a.directory.suffix</name>
+		<value>/</value>
+		<description>Directories are represented in S3 as zero-byte objects named with the specified suffix.</description>
+	</property>
+	<property>
+		<name> alluxio.underfs.s3a.inherit_acl</name>
+		<value>true</value>
+		<description>Optionally disable this to disable inheriting bucket ACLs on objects.</description>
+	</property>
+	<property>
+		<name> alluxio.underfs.s3a.list.objects.v1</name>
+		<value>false</value>
+		<description>Whether to use version 1 of GET Bucket (List Objects) API.</description>
+	</property>
+	<property>
+		<name> alluxio.underfs.s3a.request.timeout</name>
+		<value>1min</value>
+		<description>The timeout for a single request to S3. Infinity if set to 0. Setting this property to a non-zero value can improve performance by avoiding the long tail of requests to S3. For very slow connections to S3, consider increasing this value or setting it to 0.</description>
+	</property>
+	<property>
+		<name> alluxio.underfs.s3a.secure.http.enabled</name>
+		<value>false</value>
+		<description>Whether or not to use HTTPS protocol when communicating with S3.</description>
+	</property>
+	<property>
+		<name> alluxio.underfs.s3a.server.side.encryption.enabled</name>
+		<value>false</value>
+		<description>Whether or not to encrypt data stored in S3.</description>
+	</property>
+	<property>
+		<name> alluxio.underfs.s3a.signer.algorithm</name>
+		<value></value>
+		<description>The signature algorithm which should be used to sign requests to the s3 service. This is optional, and if not set, the client will automatically determine it. For interacting with an S3 endpoint which only supports v2 signatures, set this to &quot;S3SignerType&quot;.</description>
+	</property>
+	<property>
+		<name> alluxio.underfs.s3a.socket.timeout</name>
+		<value>50sec</value>
+		<description>Length of the socket timeout when communicating with S3.</description>
+	</property>
+	<property>
+		<name> alluxio.web.resources</name>
+		<value>${alluxio.home}/core/server/common/src/main/webapp</value>
+		<description>Path to the web application resources.</description>
+	</property>
+	<property>
+		<name> alluxio.web.threads</name>
+		<value>1</value>
+		<description>How many threads to use for the web server.</description>
+	</property>
+	<property>
+		<name> alluxio.work.dir</name>
+		<value>${alluxio.home}</value>
+		<description>The directory to use for Alluxio's working directory. By default, the journal, logs, and under file system data (if using local filesystem) are written here.</description>
+	</property>
+	<property>
+		<name> alluxio.zookeeper.address</name>
+		<value></value>
+		<description>Address of ZooKeeper.</description>
+	</property>
+	<property>
+		<name> alluxio.zookeeper.connection.timeout</name>
+		<value>15s</value>
+		<description>Connection timeout to use when connecting to Zookeeper</description>
+	</property>
+	<property>
+		<name> alluxio.zookeeper.election.path</name>
+		<value>/election</value>
+		<description>Election directory in ZooKeeper.</description>
+	</property>
+	<property>
+		<name> alluxio.zookeeper.enabled</name>
+		<value>false</value>
+		<description>If true, setup master fault tolerant mode using ZooKeeper.</description>
+	</property>
+	<property>
+		<name> alluxio.zookeeper.leader.inquiry.retry</name>
+		<value>10</value>
+		<description>The number of retries to inquire leader from ZooKeeper.</description>
+	</property>
+	<property>
+		<name> alluxio.zookeeper.leader.path</name>
+		<value>/leader</value>
+		<description>Leader directory in ZooKeeper.</description>
+	</property>
+	<property>
+		<name> alluxio.zookeeper.session.timeout</name>
+		<value>60s</value>
+		<description>Session timeout to use when connecting to Zookeeper</description>
+	</property>
+	<property>
+		<name> aws.accessKeyId</name>
+		<value></value>
+		<description>The access key of S3 bucket.</description>
+	</property>
+	<property>
+		<name> aws.secretKey</name>
+		<value></value>
+		<description>The secret key of S3 bucket.</description>
+	</property>
+	<property>
+		<name> fs.cos.access.key</name>
+		<value></value>
+		<description>The access key of COS bucket.</description>
+	</property>
+	<property>
+		<name> fs.cos.app.id</name>
+		<value></value>
+		<description>The app id of COS bucket.</description>
+	</property>
+	<property>
+		<name> fs.cos.connection.max</name>
+		<value>1024</value>
+		<description>The maximum number of COS connections.</description>
+	</property>
+	<property>
+		<name> fs.cos.connection.timeout</name>
+		<value>50sec</value>
+		<description>The timeout of connecting to COS.</description>
+	</property>
+	<property>
+		<name> fs.cos.region</name>
+		<value></value>
+		<description>The region name of COS bucket.</description>
+	</property>
+	<property>
+		<name> fs.cos.secret.key</name>
+		<value></value>
+		<description>The secret key of COS bucket.</description>
+	</property>
+	<property>
+		<name> fs.cos.socket.timeout</name>
+		<value>50sec</value>
+		<description>The timeout of COS socket.</description>
+	</property>
+	<property>
+		<name> fs.gcs.accessKeyId</name>
+		<value></value>
+		<description>The access key of GCS bucket.</description>
+	</property>
+	<property>
+		<name> fs.gcs.secretAccessKey</name>
+		<value></value>
+		<description>The secret key of GCS bucket.</description>
+	</property>
+	<property>
+		<name> fs.oss.accessKeyId</name>
+		<value></value>
+		<description>The access key of OSS bucket.</description>
+	</property>
+	<property>
+		<name> fs.oss.accessKeySecret</name>
+		<value></value>
+		<description>The secret key of OSS bucket.</description>
+	</property>
+	<property>
+		<name> fs.oss.endpoint</name>
+		<value></value>
+		<description>The endpoint key of OSS bucket.</description>
+	</property>
+	<property>
+		<name> fs.swift.apikey</name>
+		<value></value>
+		<description>(deprecated) The API key used for user:tenant authentication.</description>
+	</property>
+	<property>
+		<name> fs.swift.auth.method</name>
+		<value></value>
+		<description>Choice of authentication method: [tempauth (default), swiftauth, keystone, keystonev3].</description>
+	</property>
+	<property>
+		<name> fs.swift.auth.url</name>
+		<value></value>
+		<description>Authentication URL for REST server, e.g., http://server:8090/auth/v1.0.</description>
+	</property>
+	<property>
+		<name> fs.swift.password</name>
+		<value></value>
+		<description>The password used for user:tenant authentication.</description>
+	</property>
+	<property>
+		<name> fs.swift.region</name>
+		<value></value>
+		<description>Service region when using Keystone authentication.</description>
+	</property>
+	<property>
+		<name> fs.swift.simulation</name>
+		<value></value>
+		<description>Whether to simulate a single node Swift backend for testing purposes: true or false (default).</description>
+	</property>
+	<property>
+		<name> fs.swift.tenant</name>
+		<value></value>
+		<description>Swift user for authentication.</description>
+	</property>
+	<property>
+		<name> fs.swift.use.public.url</name>
+		<value></value>
+		<description>Whether the REST server is in a public domain: true (default) or false.</description>
+	</property>
+	<property>
+		<name> fs.swift.user</name>
+		<value></value>
+		<description>Swift tenant for authentication.</description>
+	</property>
+	<property>
+		<name> alluxio.master.audit.logging.enabled</name>
+		<value>false</value>
+		<description>Set to true to enable file system master audit. Note: This property must be specified as a JVM property; it is not accepted in alluxio-site.properties.</description>
+	</property>
+	<property>
+		<name> alluxio.master.audit.logging.queue.capacity</name>
+		<value>10000</value>
+		<description>Capacity of the queue used by audit logging.</description>
+	</property>
+	<property>
+		<name> alluxio.master.backup.directory</name>
+		<value>/alluxio_backups</value>
+		<description>Default directory for writing master metadata backups. This path is relative to the root directory of the root UFS. For example, if the root ufs directory is hdfs://cluster/alluxio/data, the default backup directory will be hdfs://cluster/alluxio_backups</description>
+	</property>
+	<property>
+		<name> alluxio.master.bind.host</name>
+		<value>0.0.0.0</value>
+		<description>The hostname that Alluxio master binds to. See multi-homed networks.</description>
+	</property>
+	<property>
+		<name> alluxio.master.connection.timeout</name>
+		<value>0</value>
+		<description>Timeout of connections between master and client. A value of 0 means never timeout</description>
+	</property>
+	<property>
+		<name> alluxio.master.file.async.persist.handler</name>
+		<value>alluxio.master.file.async.DefaultAsyncPersistHandler</value>
+		<description>The handler for processing the async persistence requests.</description>
+	</property>
+	<property>
+		<name> alluxio.master.format.file_prefix</name>
+		<value>_format_</value>
+		<description>The file prefix of the file generated in the journal directory when the journal is formatted. The master will search for a file with this prefix when determining if the journal is formatted.</description>
+	</property>
+	<property>
+		<name> alluxio.master.heartbeat.timeout</name>
+		<value>10min</value>
+		<description>Timeout between leader master and standby master indicating a lost master.</description>
+	</property>
+	<property>
+		<name> alluxio.master.hostname</name>
+		<value></value>
+		<description>The hostname of Alluxio master.</description>
+	</property>
+	<property>
+		<name> alluxio.master.journal.checkpoint.period.entries</name>
+		<value>2000000</value>
+		<description>The number of journal entries to write before creating a new journal checkpoint.</description>
+	</property>
+	<property>
+		<name> alluxio.master.journal.flush.batch.time</name>
+		<value>5ms</value>
+		<description>Time to wait for batching journal writes.</description>
+	</property>
+	<property>
+		<name> alluxio.master.journal.flush.timeout</name>
+		<value>5min</value>
+		<description>The amount of time to keep retrying journal writes before giving up and shutting down the master.</description>
+	</property>
+	<property>
+		<name> alluxio.master.journal.folder</name>
+		<value>${alluxio.work.dir}/journal</value>
+		<description>The path to store master journal logs.</description>
+	</property>
+	<property>
+		<name> alluxio.master.journal.formatter.class</name>
+		<value>alluxio.master.journalv0.ProtoBufJournalFormatter</value>
+		<description>The class to serialize the journal in a specified format.</description>
+	</property>
+	<property>
+		<name> alluxio.master.journal.gc.period</name>
+		<value>2min</value>
+		<description>Frequency with which to scan for and delete stale journal checkpoints.</description>
+	</property>
+	<property>
+		<name> alluxio.master.journal.gc.threshold</name>
+		<value>5min</value>
+		<description>Minimum age for garbage collecting checkpoints.</description>
+	</property>
+	<property>
+		<name> alluxio.master.journal.init.from.backup</name>
+		<value></value>
+		<description>A uri for a backup to initialize the journal from. When the master becomes primary, if it sees that its journal is freshly formatted, it will restore its state from the backup. When running multiple masters, this property must be configured on all masters since it isn't known during startup which master will become the first primary.</description>
+	</property>
+	<property>
+		<name> alluxio.master.journal.log.size.bytes.max</name>
+		<value>10MB</value>
+		<description>If a log file is bigger than this value, it will rotate to next file.</description>
+	</property>
+	<property>
+		<name> alluxio.master.journal.retry.interval</name>
+		<value>1sec</value>
+		<description>The amount of time to sleep between retrying journal flushes</description>
+	</property>
+	<property>
+		<name> alluxio.master.journal.tailer.shutdown.quiet.wait.time</name>
+		<value>5sec</value>
+		<description>Before the standby master shuts down its tailer thread, there should be no update to the leader master's journal in this specified time period.</description>
+	</property>
+	<property>
+		<name> alluxio.master.journal.tailer.sleep.time</name>
+		<value>1sec</value>
+		<description>Time for the standby master to sleep for when it cannot find anything new in leader master's journal.</description>
+	</property>
+	<property>
+		<name> alluxio.master.journal.temporary.file.gc.threshold</name>
+		<value>30min</value>
+		<description>Minimum age for garbage collecting temporary checkpoint files.</description>
+	</property>
+	<property>
+		<name> alluxio.master.journal.type</name>
+		<value>UFS</value>
+		<description>The type of journal to use. Valid options are UFS (store journal in UFS) and NOOP (do not use a journal).</description>
+	</property>
+	<property>
+		<name> alluxio.master.journal.ufs.option</name>
+		<value></value>
+		<description>The configuration to use for the journal operations.</description>
+	</property>
+	<property>
+		<name> alluxio.master.jvm.monitor.enabled</name>
+		<value>false</value>
+		<description>Whether to enable start JVM monitor thread on master.</description>
+	</property>
+	<property>
+		<name> alluxio.master.keytab.file</name>
+		<value></value>
+		<description>Kerberos keytab file for Alluxio master.</description>
+	</property>
+	<property>
+		<name> alluxio.master.lineage.checkpoint.class</name>
+		<value>alluxio.master.lineage.checkpoint.CheckpointLatestPlanner</value>
+		<description>The class name of the checkpoint strategy for lineage output files. The default strategy is to checkpoint the latest completed lineage, i.e. the lineage whose output files are completed.</description>
+	</property>
+	<property>
+		<name> alluxio.master.lineage.checkpoint.interval</name>
+		<value>5min</value>
+		<description>The interval between Alluxio's checkpoint scheduling.</description>
+	</property>
+	<property>
+		<name> alluxio.master.lineage.recompute.interval</name>
+		<value>5min</value>
+		<description>The interval between Alluxio's recompute execution. The executor scans the all the lost files tracked by lineage, and re-executes the corresponding jobs.</description>
+	</property>
+	<property>
+		<name> alluxio.master.lineage.recompute.log.path</name>
+		<value>${alluxio.logs.dir}/recompute.log</value>
+		<description>The path to the log that the recompute executor redirects the job's stdout into.</description>
+	</property>
+	<property>
+		<name> alluxio.master.log.config.report.heartbeat.interval</name>
+		<value>1h</value>
+		<description>The interval for periodically logging the configuration check report.</description>
+	</property>
+	<property>
+		<name> alluxio.master.master.heartbeat.interval</name>
+		<value>2min</value>
+		<description>The interval between Alluxio masters' heartbeats.</description>
+	</property>
+	<property>
+		<name> alluxio.master.mount.table.root.alluxio</name>
+		<value>/</value>
+		<description>Alluxio root mount point.</description>
+	</property>
+	<property>
+		<name> alluxio.master.mount.table.root.option</name>
+		<value></value>
+		<description>Configuration for the UFS of Alluxio root mount point.</description>
+	</property>
+	<property>
+		<name> alluxio.master.mount.table.root.readonly</name>
+		<value>false</value>
+		<description>Whether Alluxio root mount point is readonly.</description>
+	</property>
+	<property>
+		<name> alluxio.master.mount.table.root.shared</name>
+		<value>true</value>
+		<description>Whether Alluxio root mount point is shared.</description>
+	</property>
+	<property>
+		<name> alluxio.master.mount.table.root.ufs</name>
+		<value>${alluxio.underfs.address}</value>
+		<description>The UFS mounted to Alluxio root mount point.</description>
+	</property>
+	<property>
+		<name> alluxio.master.periodic.block.integrity.check.interval</name>
+		<value>1hr</value>
+		<description>The period for the block integrity check, disabled if &lt;= 0.</description>
+	</property>
+	<property>
+		<name> alluxio.master.periodic.block.integrity.check.repair</name>
+		<value>false</value>
+		<description>Whether the system should delete orphaned blocks found during the periodic integrity check. This is an experimental feature.</description>
+	</property>
+	<property>
+		<name> alluxio.master.port</name>
+		<value>19998</value>
+		<description>The port that Alluxio master node runs on.</description>
+	</property>
+	<property>
+		<name> alluxio.master.principal</name>
+		<value></value>
+		<description>Kerberos principal for Alluxio master.</description>
+	</property>
+	<property>
+		<name> alluxio.master.startup.block.integrity.check.enabled</name>
+		<value>true</value>
+		<description>Whether the system should be checked on startup for orphaned blocks (blocks having no corresponding files but still taking system resource due to various system failures). Orphaned blocks will be deleted during master startup if this property is true. This property is available since 1.7.1</description>
+	</property>
+	<property>
+		<name> alluxio.master.startup.consistency.check.enabled</name>
+		<value>true</value>
+		<description>Whether the system should be checked for consistency with the underlying storage on startup. During the time the check is running, Alluxio will be in read only mode. Enabled by default.</description>
+	</property>
+	<property>
+		<name> alluxio.master.thrift.shutdown.timeout</name>
+		<value>60sec</value>
+		<description>Maximum time to wait for thrift servers to stop on shutdown</description>
+	</property>
+	<property>
+		<name> alluxio.master.tieredstore.global.level0.alias</name>
+		<value>MEM</value>
+		<description>The name of the highest storage tier in the entire system.</description>
+	</property>
+	<property>
+		<name> alluxio.master.tieredstore.global.level1.alias</name>
+		<value>SSD</value>
+		<description>The name of the second highest storage tier in the entire system.</description>
+	</property>
+	<property>
+		<name> alluxio.master.tieredstore.global.level2.alias</name>
+		<value>HDD</value>
+		<description>The name of the third highest storage tier in the entire system.</description>
+	</property>
+	<property>
+		<name> alluxio.master.tieredstore.global.levels</name>
+		<value>3</value>
+		<description>The total number of storage tiers in the system.</description>
+	</property>
+	<property>
+		<name> alluxio.master.ttl.checker.interval</name>
+		<value>1hour</value>
+		<description>Time interval to periodically delete the files with expired ttl value.</description>
+	</property>
+	<property>
+		<name> alluxio.master.ufs.block.location.cache.capacity</name>
+		<value>1000000</value>
+		<description>The capacity of the UFS block locations cache. This cache caches UFS block locations for files that are persisted but not in Alluxio space, so that listing status of these files do not need to repeatedly ask UFS for their block locations. If this is set to 0, the cache will be disabled.</description>
+	</property>
+	<property>
+		<name> alluxio.master.ufs.path.cache.capacity</name>
+		<value>100000</value>
+		<description>The capacity of the UFS path cache. This cache is used to approximate the `Once` metadata load behavior (see `alluxio.user.file.metadata.load.type`). Larger caches will consume more memory, but will better approximate the `Once` behavior.</description>
+	</property>
+	<property>
+		<name> alluxio.master.ufs.path.cache.threads</name>
+		<value>64</value>
+		<description>The maximum size of the thread pool for asynchronously processing paths for the UFS path cache. Greater number of threads will decrease the amount of staleness in the async cache, but may impact performance. If this is set to 0, the cache will be disabled, and `alluxio.user.file.metadata.load.type=Once` will behave like `Always`.</description>
+	</property>
+	<property>
+		<name> alluxio.master.web.bind.host</name>
+		<value>0.0.0.0</value>
+		<description>The hostname Alluxio master web UI binds to. See multi-homed networks.</description>
+	</property>
+	<property>
+		<name> alluxio.master.web.hostname</name>
+		<value></value>
+		<description>The hostname of Alluxio Master web UI.</description>
+	</property>
+	<property>
+		<name> alluxio.master.web.port</name>
+		<value>19999</value>
+		<description>The port Alluxio web UI runs on.</description>
+	</property>
+	<property>
+		<name> alluxio.master.whitelist</name>
+		<value>/</value>
+		<description>A comma-separated list of prefixes of the paths which are cacheable, separated by semi-colons. Alluxio will try to cache the cacheable file when it is read for the first time.</description>
+	</property>
+	<property>
+		<name> alluxio.master.worker.connect.wait.time</name>
+		<value>5sec</value>
+		<description>Alluxio master will wait a period of time after start up for all workers to register, before it starts accepting client requests. This property determines the wait time.</description>
+	</property>
+	<property>
+		<name> alluxio.master.worker.heartbeat.interval</name>
+		<value>10sec</value>
+		<description>The interval between Alluxio master and worker heartbeats.</description>
+	</property>
+	<property>
+		<name> alluxio.master.worker.threads.max</name>
+		<value>A third of the max file descriptors limit, if b/w 2048 and 32768</value>
+		<description>The maximum number of incoming RPC requests to master that can be handled. This value is used to configure maximum number of threads in Thrift thread pool with master.</description>
+	</property>
+	<property>
+		<name> alluxio.master.worker.threads.min</name>
+		<value>512</value>
+		<description>The minimum number of threads used to handle incoming RPC requests to master. This value is used to configure minimum number of threads in Thrift thread pool with master.</description>
+	</property>
+	<property>
+		<name> alluxio.master.worker.timeout</name>
+		<value>5min</value>
+		<description>Timeout between master and worker indicating a lost worker.</description>
+	</property>
+	<property>
+		<name> alluxio.worker.allocator.class</name>
+		<value>alluxio.worker.block.allocator.MaxFreeAllocator</value>
+		<description>The strategy that a worker uses to allocate space among storage directories in certain storage layer. Valid options include: `alluxio.worker.block.allocator.MaxFreeAllocator`, `alluxio.worker.block.allocator.GreedyAllocator`, `alluxio.worker.block.allocator.RoundRobinAllocator`.</description>
+	</property>
+	<property>
+		<name> alluxio.worker.bind.host</name>
+		<value>0.0.0.0</value>
+		<description>The hostname Alluxio's worker node binds to. See multi-homed networks.</description>
+	</property>
+	<property>
+		<name> alluxio.worker.block.heartbeat.interval</name>
+		<value>1sec</value>
+		<description>The interval between block workers' heartbeats.</description>
+	</property>
+	<property>
+		<name> alluxio.worker.block.heartbeat.timeout</name>
+		<value>${alluxio.worker.master.connect.retry.timeout}</value>
+		<description>The timeout value of block workers' heartbeats. If the worker can't connect to master before this interval expires, the worker will exit.</description>
+	</property>
+	<property>
+		<name> alluxio.worker.block.master.client.pool.size</name>
+		<value>11</value>
+		<description>The block master client pool size on the Alluxio workers.</description>
+	</property>
+	<property>
+		<name> alluxio.worker.block.threads.max</name>
+		<value>2048</value>
+		<description>The maximum number of incoming RPC requests to block worker that can be handled. This value is used to configure maximum number of threads in Thrift thread pool with block worker. This value should be greater than the sum of `alluxio.user.block.worker.client.threads` across concurrent Alluxio clients. Otherwise, the worker connection pool can be drained, preventing new connections from being established.</description>
+	</property>
+	<property>
+		<name> alluxio.worker.block.threads.min</name>
+		<value>256</value>
+		<description>The minimum number of threads used to handle incoming RPC requests to block worker. This value is used to configure minimum number of threads in Thrift thread pool with block worker.</description>
+	</property>
+	<property>
+		<name> alluxio.worker.data.bind.host</name>
+		<value>0.0.0.0</value>
+		<description>The hostname that the Alluxio worker's data server runs on. See multi-homed networks.</description>
+	</property>
+	<property>
+		<name> alluxio.worker.data.folder</name>
+		<value>/alluxioworker/</value>
+		<description>A relative path within each storage directory used as the data folder for Alluxio worker to put data for tiered store.</description>
+	</property>
+	<property>
+		<name> alluxio.worker.data.folder.permissions</name>
+		<value>rwxrwxrwx</value>
+		<description>The permission set for the worker data folder. If short circuit is used this folder should be accessible by all users (rwxrwxrwx).</description>
+	</property>
+	<property>
+		<name> alluxio.worker.data.folder.tmp</name>
+		<value>.tmp_blocks</value>
+		<description>A relative path in alluxio.worker.data.folder used to store the temporary data for uncommitted files.</description>
+	</property>
+	<property>
+		<name> alluxio.worker.data.hostname</name>
+		<value></value>
+		<description>The hostname of Alluxio worker data service.</description>
+	</property>
+	<property>
+		<name> alluxio.worker.data.port</name>
+		<value>29999</value>
+		<description>The port Alluxio's worker's data server runs on.</description>
+	</property>
+	<property>
+		<name> alluxio.worker.data.server.class</name>
+		<value>alluxio.worker.netty.NettyDataServer</value>
+		<description>Selects the networking stack to run the worker with. Valid options are: `alluxio.worker.netty.NettyDataServer`.</description>
+	</property>
+	<property>
+		<name> alluxio.worker.data.server.domain.socket.address</name>
+		<value></value>
+		<description>The path to the domain socket. Short-circuit reads make use of a UNIX domain socket when this is set (non-empty). This is a special path in the file system that allows the client and the AlluxioWorker to communicate. You will need to set a path to this socket. The AlluxioWorker needs to be able to create the path. If alluxio.worker.data.server.domain.socket.as.uuid is set, the path should be the home directory for the domain socket. The full path for the domain socket with be /.&lt;/td&gt;
+  &lt;/tr&gt;
+
+  </description>
+	</property>
+	<property>
+		<name> alluxio.worker.data.server.domain.socket.as.uuid</name>
+		<value>false</value>
+		<description>If true, the property alluxio.worker.data.server.domain.socket.addressis the path to the home directory for the domain socket and a unique identifier is used as the domain socket name. In addition, clients ignore alluxio.user.hostname while detecting a local worker for short circuit ops. If false, the property is the absolute path to the UNIX domain socket.</description>
+	</property>
+	<property>
+		<name> alluxio.worker.data.tmp.subdir.max</name>
+		<value>1024</value>
+		<description>The maximum number of sub-directories allowed to be created in alluxio.worker.data.tmp.folder.</description>
+	</property>
+	<property>
+		<name> alluxio.worker.evictor.class</name>
+		<value>alluxio.worker.block.evictor.LRUEvictor</value>
+		<description>The strategy that a worker uses to evict block files when a storage layer runs out of space. Valid options include `alluxio.worker.block.evictor.LRFUEvictor`, `alluxio.worker.block.evictor.GreedyEvictor`, `alluxio.worker.block.evictor.LRUEvictor`.</description>
+	</property>
+	<property>
+		<name> alluxio.worker.evictor.lrfu.attenuation.factor</name>
+		<value>2.0</value>
+		<description>A attenuation factor in [2, INF) to control the behavior of LRFU.</description>
+	</property>
+	<property>
+		<name> alluxio.worker.evictor.lrfu.step.factor</name>
+		<value>0.25</value>
+		<description>A factor in [0, 1] to control the behavior of LRFU: smaller value makes LRFU more similar to LFU; and larger value makes LRFU closer to LRU.</description>
+	</property>
+	<property>
+		<name> alluxio.worker.file.buffer.size</name>
+		<value>1MB</value>
+		<description>The buffer size for worker to write data into the tiered storage.</description>
+	</property>
+	<property>
+		<name> alluxio.worker.file.persist.pool.size</name>
+		<value>64</value>
+		<description>The size of the thread pool per worker, in which the thread persists an ASYNC_THROUGH file to under storage.</description>
+	</property>
+	<property>
+		<name> alluxio.worker.file.persist.rate.limit</name>
+		<value>2GB</value>
+		<description>The rate limit of asynchronous persistence per second.</description>
+	</property>
+	<property>
+		<name> alluxio.worker.file.persist.rate.limit.enabled</name>
+		<value>false</value>
+		<description>Whether to enable rate limiting when performing asynchronous persistence.</description>
+	</property>
+	<property>
+		<name> alluxio.worker.filesystem.heartbeat.interval</name>
+		<value>1sec</value>
+		<description>The heartbeat interval between the worker and file system master.</description>
+	</property>
+	<property>
+		<name> alluxio.worker.free.space.timeout</name>
+		<value>10sec</value>
+		<description>The duration for which a worker will wait for eviction to make space available for a client write request.</description>
+	</property>
+	<property>
+		<name> alluxio.worker.hostname</name>
+		<value></value>
+		<description>The hostname of Alluxio worker.</description>
+	</property>
+	<property>
+		<name> alluxio.worker.jvm.monitor.enabled</name>
+		<value>false</value>
+		<description>Whether to enable start JVM monitor thread on worker.</description>
+	</property>
+	<property>
+		<name> alluxio.worker.keytab.file</name>
+		<value></value>
+		<description>Kerberos keytab file for Alluxio worker.</description>
+	</property>
+	<property>
+		<name> alluxio.worker.master.connect.retry.timeout</name>
+		<value>1hour</value>
+		<description>Retry period before workers give up on connecting to master</description>
+	</property>
+	<property>
+		<name> alluxio.worker.memory.size</name>
+		<value>2/3 of total system memory, or 1GB if system memory size cannot be determined</value>
+		<description>Memory capacity of each worker node.</description>
+	</property>
+	<property>
+		<name> alluxio.worker.network.netty.async.cache.manager.threads.max</name>
+		<value>8</value>
+		<description>The maximum number of threads used to cache blocks asynchronously in the netty data server.</description>
+	</property>
+	<property>
+		<name> alluxio.worker.network.netty.backlog</name>
+		<value></value>
+		<description>Netty socket option for SO_BACKLOG: the number of connections queued.</description>
+	</property>
+	<property>
+		<name> alluxio.worker.network.netty.block.reader.threads.max</name>
+		<value>2048</value>
+		<description>The maximum number of threads used to read blocks in the netty data server.</description>
+	</property>
+	<property>
+		<name> alluxio.worker.network.netty.block.writer.threads.max</name>
+		<value>1024</value>
+		<description>The maximum number of threads used to write blocks in the netty data server.</description>
+	</property>
+	<property>
+		<name> alluxio.worker.network.netty.boss.threads</name>
+		<value>1</value>
+		<description>How many threads to use for accepting new requests.</description>
+	</property>
+	<property>
+		<name> alluxio.worker.network.netty.buffer.receive</name>
+		<value></value>
+		<description>Netty socket option for SO_RCVBUF: the proposed buffer size that will be used for receives.</description>
+	</property>
+	<property>
+		<name> alluxio.worker.network.netty.buffer.send</name>
+		<value></value>
+		<description>Netty socket option for SO_SNDBUF: the proposed buffer size that will be used for sends.</description>
+	</property>
+	<property>
+		<name> alluxio.worker.network.netty.channel</name>
+		<value>EPOLL</value>
+		<description>Netty channel type: NIO or EPOLL. If EPOLL is not available, this will automatically fall back to NIO.</description>
+	</property>
+	<property>
+		<name> alluxio.worker.network.netty.file.transfer</name>
+		<value>MAPPED</value>
+		<description>When returning files to the user, select how the data is transferred; valid options are `MAPPED` (uses java MappedByteBuffer) and `TRANSFER` (uses Java FileChannel.transferTo).</description>
+	</property>
+	<property>
+		<name> alluxio.worker.network.netty.file.writer.threads.max</name>
+		<value>1024</value>
+		<description>The maximum number of threads used to write files to UFS in the netty data server.</description>
+	</property>
+	<property>
+		<name> alluxio.worker.network.netty.reader.buffer.size.packets</name>
+		<value>16</value>
+		<description>The maximum number of parallel data packets when a client reads from a worker.</description>
+	</property>
+	<property>
+		<name> alluxio.worker.network.netty.rpc.threads.max</name>
+		<value>2048</value>
+		<description>The maximum number of threads used to handle worker side RPCs in the netty data server.</description>
+	</property>
+	<property>
+		<name> alluxio.worker.network.netty.shutdown.quiet.period</name>
+		<value>2sec</value>
+		<description>The quiet period. When the netty server is shutting down, it will ensure that no RPCs occur during the quiet period. If an RPC occurs, then the quiet period will restart before shutting down the netty server.</description>
+	</property>
+	<property>
+		<name> alluxio.worker.network.netty.shutdown.timeout</name>
+		<value>15sec</value>
+		<description>Maximum amount of time to wait until the netty server is shutdown (regardless of the quiet period).</description>
+	</property>
+	<property>
+		<name> alluxio.worker.network.netty.watermark.high</name>
+		<value>32KB</value>
+		<description>Determines how many bytes can be in the write queue before switching to non-writable.</description>
+	</property>
+	<property>
+		<name> alluxio.worker.network.netty.watermark.low</name>
+		<value>8KB</value>
+		<description>Once the high watermark limit is reached, the queue must be flushed down to the low watermark before switching back to writable.</description>
+	</property>
+	<property>
+		<name> alluxio.worker.network.netty.worker.threads</name>
+		<value>0</value>
+		<description>How many threads to use for processing requests. Zero defaults to #cpuCores * 2.</description>
+	</property>
+	<property>
+		<name> alluxio.worker.network.netty.writer.buffer.size.packets</name>
+		<value>16</value>
+		<description>The maximum number of parallel data packets when a client writes to a worker.</description>
+	</property>
+	<property>
+		<name> alluxio.worker.port</name>
+		<value>29998</value>
+		<description>The port Alluxio's worker node runs on.</description>
+	</property>
+	<property>
+		<name> alluxio.worker.principal</name>
+		<value></value>
+		<description>Kerberos principal for Alluxio worker.</description>
+	</property>
+	<property>
+		<name> alluxio.worker.session.timeout</name>
+		<value>1min</value>
+		<description>Timeout between worker and client connection indicating a lost session connection.</description>
+	</property>
+	<property>
+		<name> alluxio.worker.tieredstore.block.lock.readers</name>
+		<value>1000</value>
+		<description>The max number of concurrent readers for a block lock.</description>
+	</property>
+	<property>
+		<name> alluxio.worker.tieredstore.block.locks</name>
+		<value>1000</value>
+		<description>Total number of block locks for an Alluxio block worker. Larger value leads to finer locking granularity, but uses more space.</description>
+	</property>
+	<property>
+		<name> alluxio.worker.tieredstore.level0.alias</name>
+		<value>MEM</value>
+		<description>The alias of the top storage tier on this worker. It must match one of the global storage tiers from the master configuration. We disable placing an alias lower in the global hierarchy before an alias with a higher postion on the worker hierarchy. So by default, SSD cannot come before MEM on any worker.</description>
+	</property>
+	<property>
+		<name> alluxio.worker.tieredstore.level0.dirs.path</name>
+		<value>/mnt/ramdisk on Linux, /Volumes/ramdisk on OSX</value>
+		<description>The path of storage directory for the top storage tier. Note for MacOS the value should be `/Volumes/`.</description>
+	</property>
+	<property>
+		<name> alluxio.worker.tieredstore.level0.dirs.quota</name>
+		<value>${alluxio.worker.memory.size}</value>
+		<description>The capacity of the top storage tier.</description>
+	</property>
+	<property>
+		<name> alluxio.worker.tieredstore.level0.reserved.ratio</name>
+		<value></value>
+		<description>Fraction of space reserved in the top storage tier. This has been deprecated, please use high and low watermark instead.</description>
+	</property>
+	<property>
+		<name> alluxio.worker.tieredstore.level0.watermark.high.ratio</name>
+		<value>0.95</value>
+		<description>The high watermark of the space in the top storage tier (a value between 0 and 1).</description>
+	</property>
+	<property>
+		<name> alluxio.worker.tieredstore.level0.watermark.low.ratio</name>
+		<value>0.7</value>
+		<description>The low watermark of the space in the top storage tier (a value between 0 and 1).</description>
+	</property>
+	<property>
+		<name> alluxio.worker.tieredstore.level1.alias</name>
+		<value></value>
+		<description>The alias of the second storage tier on this worker.</description>
+	</property>
+	<property>
+		<name> alluxio.worker.tieredstore.level1.dirs.path</name>
+		<value></value>
+		<description>The path of storage directory for the second storage tier.</description>
+	</property>
+	<property>
+		<name> alluxio.worker.tieredstore.level1.dirs.quota</name>
+		<value></value>
+		<description>The capacity of the second storage tier.</description>
+	</property>
+	<property>
+		<name> alluxio.worker.tieredstore.level1.reserved.ratio</name>
+		<value></value>
+		<description>Fraction of space reserved in the second storage tier. This has been deprecated, please use high and low watermark instead.</description>
+	</property>
+	<property>
+		<name> alluxio.worker.tieredstore.level1.watermark.high.ratio</name>
+		<value>0.95</value>
+		<description>The high watermark of the space in the second storage tier (a value between 0 and 1).</description>
+	</property>
+	<property>
+		<name> alluxio.worker.tieredstore.level1.watermark.low.ratio</name>
+		<value>0.7</value>
+		<description>The low watermark of the space in the second storage tier (a value between 0 and 1).</description>
+	</property>
+	<property>
+		<name> alluxio.worker.tieredstore.level2.alias</name>
+		<value></value>
+		<description>The alias of the third storage tier on this worker.</description>
+	</property>
+	<property>
+		<name> alluxio.worker.tieredstore.level2.dirs.path</name>
+		<value></value>
+		<description>The path of storage directory for the third storage tier.</description>
+	</property>
+	<property>
+		<name> alluxio.worker.tieredstore.level2.dirs.quota</name>
+		<value></value>
+		<description>The capacity of the third storage tier.</description>
+	</property>
+	<property>
+		<name> alluxio.worker.tieredstore.level2.reserved.ratio</name>
+		<value></value>
+		<description>Fraction of space reserved in the third storage tier. This has been deprecated, please use high and low watermark instead.</description>
+	</property>
+	<property>
+		<name> alluxio.worker.tieredstore.level2.watermark.high.ratio</name>
+		<value>0.95</value>
+		<description>The high watermark of the space in the third storage tier (a value between 0 and 1).</description>
+	</property>
+	<property>
+		<name> alluxio.worker.tieredstore.level2.watermark.low.ratio</name>
+		<value>0.7</value>
+		<description>The low watermark of the space in the third storage tier (a value between 0 and 1).</description>
+	</property>
+	<property>
+		<name> alluxio.worker.tieredstore.levels</name>
+		<value>1</value>
+		<description>The number of storage tiers on the worker.</description>
+	</property>
+	<property>
+		<name> alluxio.worker.tieredstore.reserver.enabled</name>
+		<value>true</value>
+		<description>Whether to enable tiered store reserver service or not.</description>
+	</property>
+	<property>
+		<name> alluxio.worker.tieredstore.reserver.interval</name>
+		<value>1sec</value>
+		<description>The time period of space reserver service, which keeps certain portion of available space on each layer.</description>
+	</property>
+	<property>
+		<name> alluxio.worker.tieredstore.retry</name>
+		<value>3</value>
+		<description>The number of retries that the worker uses to process blocks.</description>
+	</property>
+	<property>
+		<name> alluxio.worker.ufs.block.open.timeout</name>
+		<value>5min</value>
+		<description>Timeout to open a block from UFS.</description>
+	</property>
+	<property>
+		<name> alluxio.worker.ufs.instream.cache.enabled</name>
+		<value>true</value>
+		<description>Enable caching for seekable under storage input stream, so that subsequent seek operations on the same file will reuse the cached input stream. This will improve position read performance as the open operations of some under file system would be expensive. The cached input stream would be stale, when the UFS file is modified without notifying alluxio. </description>
+	</property>
+	<property>
+		<name> alluxio.worker.ufs.instream.cache.expiration.time</name>
+		<value>5min</value>
+		<description>Cached UFS instream expiration time.</description>
+	</property>
+	<property>
+		<name> alluxio.worker.ufs.instream.cache.max.size</name>
+		<value>5000</value>
+		<description>The max entries in the UFS instream cache.</description>
+	</property>
+	<property>
+		<name> alluxio.worker.web.bind.host</name>
+		<value>0.0.0.0</value>
+		<description>The hostname Alluxio worker's web server binds to. See multi-homed networks.</description>
+	</property>
+	<property>
+		<name> alluxio.worker.web.hostname</name>
+		<value></value>
+		<description>The hostname Alluxio worker's web UI binds to.</description>
+	</property>
+	<property>
+		<name> alluxio.worker.web.port</name>
+		<value>30000</value>
+		<description>The port Alluxio worker's web UI runs on.</description>
+	</property>
+	<property>
+		<name> alluxio.user.app.id</name>
+		<value></value>
+		<description>The custom id to use for labeling this client's info, such as metrics. If unset, a random long will be used. This value is displayed in the client logs on initialization. Note that using the same app id will cause client info to be aggregated, so different applications must set their own ids or leave this value unset to use a randomly generated id.</description>
+	</property>
+	<property>
+		<name> alluxio.user.block.master.client.threads</name>
+		<value>10</value>
+		<description>The number of threads used by a block master client pool to talk to the block master.</description>
+	</property>
+	<property>
+		<name> alluxio.user.block.remote.read.buffer.size.bytes</name>
+		<value>8MB</value>
+		<description>The size of the file buffer to read data from remote Alluxio worker.</description>
+	</property>
+	<property>
+		<name> alluxio.user.block.remote.reader.class</name>
+		<value>alluxio.client.netty.NettyRemoteBlockReader</value>
+		<description>Selects networking stack to run the client with. Currently only `alluxio.client.netty.NettyRemoteBlockReader` (read remote data using netty) is valid.</description>
+	</property>
+	<property>
+		<name> alluxio.user.block.remote.writer.class</name>
+		<value>alluxio.client.netty.NettyRemoteBlockWriter</value>
+		<description>Selects networking stack to run the client with for block writes.</description>
+	</property>
+	<property>
+		<name> alluxio.user.block.size.bytes.default</name>
+		<value>512MB</value>
+		<description>Default block size for Alluxio files.</description>
+	</property>
+	<property>
+		<name> alluxio.user.block.worker.client.pool.gc.threshold</name>
+		<value>300sec</value>
+		<description>A block worker client is closed if it has been idle for more than this threshold.</description>
+	</property>
+	<property>
+		<name> alluxio.user.block.worker.client.pool.size.max</name>
+		<value>128</value>
+		<description>The maximum number of block worker clients cached in the block worker client pool.</description>
+	</property>
+	<property>
+		<name> alluxio.user.block.worker.client.read.retry</name>
+		<value>5</value>
+		<description>The maximum number of workers to retry before the client gives up on  reading a block</description>
+	</property>
+	<property>
+		<name> alluxio.user.block.worker.client.threads</name>
+		<value>10</value>
+		<description>The number of threads used by a block worker client pool for heartbeating to a worker. Increase this value if worker failures affect client connections to healthy workers.</description>
+	</property>
+	<property>
+		<name> alluxio.user.conf.cluster.default.enabled</name>
+		<value>true</value>
+		<description>When this property is true, an Alluxio client will load the default values of configuration properties set by Alluxio master.</description>
+	</property>
+	<property>
+		<name> alluxio.user.date.format.pattern</name>
+		<value>MM-dd-yyyy HH:mm:ss:SSS</value>
+		<description>Display formatted date in cli command and web UI by given date format pattern.</description>
+	</property>
+	<property>
+		<name> alluxio.user.failed.space.request.limits</name>
+		<value>3</value>
+		<description>The number of times to request space from the file system before aborting.</description>
+	</property>
+	<property>
+		<name> alluxio.user.file.buffer.bytes</name>
+		<value>8MB</value>
+		<description>The size of the file buffer to use for file system reads/writes.</description>
+	</property>
+	<property>
+		<name> alluxio.user.file.cache.partially.read.block</name>
+		<value>true</value>
+		<description>This property is deprecated as of 1.7 and has no effect. Use the read type to control caching behavior.</description>
+	</property>
+	<property>
+		<name> alluxio.user.file.copyfromlocal.write.location.policy.class</name>
+		<value>alluxio.client.file.policy.RoundRobinPolicy</value>
+		<description>The default location policy for choosing workers for writing a file's blocks using copyFromLocal command.</description>
+	</property>
+	<property>
+		<name> alluxio.user.file.delete.unchecked</name>
+		<value>false</value>
+		<description>Whether to check if the UFS contents are in sync with Alluxio before attempting to delete persisted directories recursively.</description>
+	</property>
+	<property>
+		<name> alluxio.user.file.master.client.threads</name>
+		<value>10</value>
+		<description>The number of threads used by a file master client to talk to the file master.</description>
+	</property>
+	<property>
+		<name> alluxio.user.file.metadata.load.type</name>
+		<value>Once</value>
+		<description>The behavior of loading metadata from UFS. When information about a path is requested and the path does not exist in Alluxio, metadata can be loaded from the UFS. Valid options are `Always`, `Never`, and `Once`. `Always` will always access UFS to see if the path exists in the UFS. `Never` will never consult the UFS. `Once` will access the UFS the &quot;first&quot; time (according to a cache), but not after that. This parameter is ignored if a metadata sync is performed, via the parameter &quot;alluxio.user.file.metadata.sync.interval&quot;</description>
+	</property>
+	<property>
+		<name> alluxio.user.file.metadata.sync.interval</name>
+		<value>-1</value>
+		<description>The interval for syncing UFS metadata before invoking an operation on a path. -1 means no sync will occur. 0 means Alluxio will always sync the metadata of the path before an operation. If you specify a time interval, Alluxio will (best effort) not re-sync a path within that time interval. Syncing the metadata for a path must interact with the UFS, so it is an expensive operation. If a sync is performed for an operation, the configuration of &quot;alluxio.user.file.metadata.load.type&quot; will be ignored.</description>
+	</property>
+	<property>
+		<name> alluxio.user.file.passive.cache.enabled</name>
+		<value>true</value>
+		<description>Whether to cache files to local Alluxio workers when the files are read from remote workers (not UFS).</description>
+	</property>
+	<property>
+		<name> alluxio.user.file.readtype.default</name>
+		<value>CACHE_PROMOTE</value>
+		<description>Default read type when creating Alluxio files. Valid options are `CACHE_PROMOTE` (move data to highest tier if already in Alluxio storage, write data into highest tier of local Alluxio if data needs to be read from under storage), `CACHE` (write data into highest tier of local Alluxio if data needs to be read from under storage), `NO_CACHE` (no data interaction with Alluxio, if the read is from Alluxio data migration or eviction will not occur).</description>
+	</property>
+	<property>
+		<name> alluxio.user.file.seek.buffer.size.bytes</name>
+		<value>1MB</value>
+		<description>The file seek buffer size. This is only used when alluxio.user.file.cache.partially.read.block is enabled.</description>
+	</property>
+	<property>
+		<name> alluxio.user.file.waitcompleted.poll</name>
+		<value>1sec</value>
+		<description>The time interval to poll a file for its completion status when using waitCompleted.</description>
+	</property>
+	<property>
+		<name> alluxio.user.file.write.avoid.eviction.policy.reserved.size.bytes</name>
+		<value>0MB</value>
+		<description>The portion of space reserved in worker when user use the LocalFirstAvoidEvictionPolicy class as file write location policy.</description>
+	</property>
+	<property>
+		<name> alluxio.user.file.write.location.policy.class</name>
+		<value>alluxio.client.file.policy.LocalFirstPolicy</value>
+		<description>The default location policy for choosing workers for writing a file's blocks.</description>
+	</property>
+	<property>
+		<name> alluxio.user.file.write.tier.default</name>
+		<value>0</value>
+		<description>The default tier for choosing a where to write a block. Valid option is any integer. Non-negative values identify tiers starting from top going down (0 identifies the first tier, 1 identifies the second tier, and so on). If the provided value is greater than the number of tiers, it identifies the last tier. Negative values identify tiers starting from the bottom going up (-1 identifies the last tier, -2 identifies the second to last tier, and so on). If the absolute value of the provided value is greater than the number of tiers, it identifies the first tier.</description>
+	</property>
+	<property>
+		<name> alluxio.user.file.writetype.default</name>
+		<value>MUST_CACHE</value>
+		<description>Default write type when creating Alluxio files. Valid options are `MUST_CACHE` (write will only go to Alluxio and must be stored in Alluxio), `CACHE_THROUGH` (try to cache, write to UnderFS synchronously), `THROUGH` (no cache, write to UnderFS synchronously).</description>
+	</property>
+	<property>
+		<name> alluxio.user.heartbeat.interval</name>
+		<value>1sec</value>
+		<description>The interval between Alluxio workers' heartbeats.</description>
+	</property>
+	<property>
+		<name> alluxio.user.hostname</name>
+		<value></value>
+		<description>The hostname to use for the client. Note: this property is deprecated. set alluxio.locality.node instead</description>
+	</property>
+	<property>
+		<name> alluxio.user.lineage.enabled</name>
+		<value>false</value>
+		<description>Flag to enable lineage feature.</description>
+	</property>
+	<property>
+		<name> alluxio.user.lineage.master.client.threads</name>
+		<value>10</value>
+		<description>The number of threads used by a lineage master client to talk to the lineage master.</description>
+	</property>
+	<property>
+		<name> alluxio.user.local.reader.packet.size.bytes</name>
+		<value>8MB</value>
+		<description>When a client reads from a local worker, the maximum data packet size.</description>
+	</property>
+	<property>
+		<name> alluxio.user.local.writer.packet.size.bytes</name>
+		<value>64KB</value>
+		<description>When a client writes to a local worker, the maximum data packet size.</description>
+	</property>
+	<property>
+		<name> alluxio.user.metrics.collection.enabled</name>
+		<value>true</value>
+		<description>Enable collecting the client-side metrics and hearbeat them to master</description>
+	</property>
+	<property>
+		<name> alluxio.user.metrics.heartbeat.interval</name>
+		<value>3sec</value>
+		<description>The time period of client master hearbeat to send the client-side metrics.</description>
+	</property>
+	<property>
+		<name> alluxio.user.network.netty.channel</name>
+		<value>EPOLL</value>
+		<description>Type of netty channels. If EPOLL is not available, this will automatically fall back to NIO.</description>
+	</property>
+	<property>
+		<name> alluxio.user.network.netty.channel.pool.disabled</name>
+		<value>false</value>
+		<description>Disable netty channel pool. This should be turned on if the client version is &gt;= 1.3.0 but server version is &lt;= 1.2.x.</description>
+	</property>
+	<property>
+		<name> alluxio.user.network.netty.channel.pool.gc.threshold</name>
+		<value>300sec</value>
+		<description>A netty channel is closed if it has been idle for more than this threshold.</description>
+	</property>
+	<property>
+		<name> alluxio.user.network.netty.channel.pool.size.max</name>
+		<value>1024</value>
+		<description>The maximum number of netty channels cached in the netty channel pool.</description>
+	</property>
+	<property>
+		<name> alluxio.user.network.netty.reader.buffer.size.packets</name>
+		<value>16</value>
+		<description>When a client reads from a remote worker, the maximum number of packets to buffer by the client.</description>
+	</property>
+	<property>
+		<name> alluxio.user.network.netty.reader.packet.size.bytes</name>
+		<value>64KB</value>
+		<description>When a client reads from a remote worker, the maximum packet size.</description>
+	</property>
+	<property>
+		<name> alluxio.user.network.netty.timeout</name>
+		<value>30sec</value>
+		<description>The maximum time for a netty client (for block reads and block writes) to wait for a response from the data server.</description>
+	</property>
+	<property>
+		<name> alluxio.user.network.netty.worker.threads</name>
+		<value>0</value>
+		<description>How many threads to use for remote block worker client to read from remote block workers.</description>
+	</property>
+	<property>
+		<name> alluxio.user.network.netty.writer.buffer.size.packets</name>
+		<value>16</value>
+		<description>When a client writes to a remote worker, the maximum number of packets to buffer by the client.</description>
+	</property>
+	<property>
+		<name> alluxio.user.network.netty.writer.close.timeout</name>
+		<value>30min</value>
+		<description>The timeout to close a netty writer client.</description>
+	</property>
+	<property>
+		<name> alluxio.user.network.netty.writer.packet.size.bytes</name>
+		<value>64KB</value>
+		<description>When a client writes to a remote worker, the maximum packet size.</description>
+	</property>
+	<property>
+		<name> alluxio.user.network.socket.timeout</name>
+		<value>10min</value>
+		<description>The time out of a socket created by a user to connect to the master.</description>
+	</property>
+	<property>
+		<name> alluxio.user.rpc.retry.base.sleep</name>
+		<value>50ms</value>
+		<description>Alluxio client RPCs automatically retry for transient errors with an exponential backoff. This property determines the base time in the exponential backoff.</description>
+	</property>
+	<property>
+		<name> alluxio.user.rpc.retry.max.duration</name>
+		<value>2min</value>
+		<description>Alluxio client RPCs automatically retry for transient errors with an exponential backoff. This property determines the maximum duration to retry for before giving up. Note that, this value is set to 5s for fs and fsadmin CLIs.</description>
+	</property>
+	<property>
+		<name> alluxio.user.rpc.retry.max.num.retry</name>
+		<value>100</value>
+		<description>Alluxio client RPCs automatically retry for transient errors with an exponential backoff. This property determines the maximum number of retries. This property has been deprecated by time-based retry using: alluxio.user.rpc.retry.max.duration</description>
+	</property>
+	<property>
+		<name> alluxio.user.rpc.retry.max.sleep</name>
+		<value>3sec</value>
+		<description>Alluxio client RPCs automatically retry for transient errors with an exponential backoff. This property determines the maximum wait time in the backoff.</description>
+	</property>
+	<property>
+		<name> alluxio.user.short.circuit.enabled</name>
+		<value>true</value>
+		<description>The short circuit read/write which allows the clients to read/write data without going through Alluxio workers if the data is local is enabled if set to true.</description>
+	</property>
+	<property>
+		<name> alluxio.user.ufs.block.read.concurrency.max</name>
+		<value>2147483647</value>
+		<description>The maximum concurrent readers for one UFS block on one Block Worker.</description>
+	</property>
+	<property>
+		<name> alluxio.user.ufs.block.read.location.policy</name>
+		<value>alluxio.client.file.policy.LocalFirstPolicy</value>
+		<description>When an Alluxio client reads a file from the UFS, it delegates the read to an Alluxio worker. The client uses this policy to choose which worker to read through. Builtin choices: [alluxio.client.block.policy.DeterministicHashPolicy, alluxio.client.file.policy.LocalFirstAvoidEvictionPolicy, alluxio.client.file.policy.LocalFirstPolicy, alluxio.client.file.policy.MostAvailableFirstPolicy, alluxio.client.file.policy.RoundRobinPolicy, alluxio.client.file.policy.SpecificHostPolicy].</description>
+	</property>
+	<property>
+		<name> alluxio.user.ufs.block.read.location.policy.deterministic.hash.shards</name>
+		<value>1</value>
+		<description>When alluxio.user.ufs.block.read.location.policy is set to alluxio.client.block.policy.DeterministicHashPolicy, this specifies the number of hash shards.</description>
+	</property>
+	<property>
+		<name> alluxio.user.ufs.delegation.read.buffer.size.bytes</name>
+		<value>8MB</value>
+		<description>Size of the read buffer when reading from the UFS through the Alluxio worker. Each read request will fetch at least this many bytes, unless the read reaches the end of the file.</description>
+	</property>
+	<property>
+		<name> alluxio.user.ufs.delegation.write.buffer.size.bytes</name>
+		<value>2MB</value>
+		<description>Size of the write buffer when writing to the UFS through the Alluxio worker. Each write request will write at least this many bytes, unless the write is at the end of the file.</description>
+	</property>
+	<property>
+		<name> alluxio.user.ufs.file.reader.class</name>
+		<value>alluxio.client.netty.NettyUnderFileSystemFileReader</value>
+		<description>Selects networking stack to run the client with for reading from under file system through a worker's data server. Currently only `alluxio.client.netty.NettyUnderFileSystemFileReader` (remote read using netty) is valid.</description>
+	</property>
+	<property>
+		<name> alluxio.user.ufs.file.writer.class</name>
+		<value>alluxio.client.netty.NettyUnderFileSystemFileWriter</value>
+		<description>Selects networking stack to run the client with for writing to under file system through a worker's data server. Currently only `alluxio.client.netty.NettyUnderFileSystemFileWriter` (remote write using netty) is valid.</description>
+	</property>
+	<property>
+		<name> alluxio.integration.master.resource.cpu</name>
+		<value>1</value>
+		<description>The number of CPUs to run an Alluxio master for YARN framework.</description>
+	</property>
+	<property>
+		<name> alluxio.integration.master.resource.mem</name>
+		<value>1024MB</value>
+		<description>The amount of memory to run an Alluxio master for YARN framework.</description>
+	</property>
+	<property>
+		<name> alluxio.integration.mesos.alluxio.jar.url</name>
+		<value>http://downloads.alluxio.org/downloads/files/${alluxio.version}/alluxio-${alluxio.version}-bin.tar.gz</value>
+		<description>Url to download an Alluxio distribution from during Mesos deployment.</description>
+	</property>
+	<property>
+		<name> alluxio.integration.mesos.jdk.path</name>
+		<value>jdk1.8.0_151</value>
+		<description>If installing java from a remote URL during mesos deployment, this must be set to the directory name of the untarred jdk.</description>
+	</property>
+	<property>
+		<name> alluxio.integration.mesos.jdk.url</name>
+		<value>LOCAL</value>
+		<description>A url from which to install the jdk during Mesos deployment. Default to LOCAL which tells Mesos to use the local JDK on the system. When using this property, alluxio.integration.mesos.jdk.path must also be set correctly.</description>
+	</property>
+	<property>
+		<name> alluxio.integration.mesos.master.name</name>
+		<value>AlluxioMaster</value>
+		<description>The name of the master process to use within Mesos.</description>
+	</property>
+	<property>
+		<name> alluxio.integration.mesos.master.node.count</name>
+		<value>1</value>
+		<description>The number of Alluxio master process to run within Mesos.</description>
+	</property>
+	<property>
+		<name> alluxio.integration.mesos.principal</name>
+		<value>alluxio</value>
+		<description>The Mesos principal for the Alluxio Mesos Framework.</description>
+	</property>
+	<property>
+		<name> alluxio.integration.mesos.role</name>
+		<value>*</value>
+		<description>Mesos role for the Alluxio Mesos Framework.</description>
+	</property>
+	<property>
+		<name> alluxio.integration.mesos.secret</name>
+		<value></value>
+		<description>Secret token for authenticating with Mesos.</description>
+	</property>
+	<property>
+		<name> alluxio.integration.mesos.user</name>
+		<value></value>
+		<description>The Mesos user for the Alluxio Mesos Framework. Defaults to the current user.</description>
+	</property>
+	<property>
+		<name> alluxio.integration.mesos.worker.name</name>
+		<value>AlluxioWorker</value>
+		<description>The name of the worker process to use within Mesos.</description>
+	</property>
+	<property>
+		<name> alluxio.integration.worker.resource.cpu</name>
+		<value>1</value>
+		<description>The number of CPUs to run an Alluxio worker for YARN framework.</description>
+	</property>
+	<property>
+		<name> alluxio.integration.worker.resource.mem</name>
+		<value>1024MB</value>
+		<description>The amount of memory to run an Alluxio worker for YARN framework.</description>
+	</property>
+	<property>
+		<name> alluxio.integration.yarn.workers.per.host.max</name>
+		<value>1</value>
+		<description>The number of workers to run on an Alluxio host for YARN framework.</description>
+	</property>
+	<property>
+		<name> alluxio.security.authentication.custom.provider.class</name>
+		<value></value>
+		<description>The class to provide customized authentication implementation, when alluxio.security.authentication.type is set to CUSTOM. It must implement the interface 'alluxio.security.authentication.AuthenticationProvider'.</description>
+	</property>
+	<property>
+		<name> alluxio.security.authentication.type</name>
+		<value>SIMPLE</value>
+		<description>The authentication mode. Currently three modes are supported: NOSASL, SIMPLE, CUSTOM. The default value SIMPLE indicates that a simple authentication is enabled. Server trusts whoever the client claims to be.</description>
+	</property>
+	<property>
+		<name> alluxio.security.authorization.permission.enabled</name>
+		<value>true</value>
+		<description>Whether to enable access control based on file permission.</description>
+	</property>
+	<property>
+		<name> alluxio.security.authorization.permission.supergroup</name>
+		<value>supergroup</value>
+		<description>The super group of Alluxio file system. All users in this group have super permission.</description>
+	</property>
+	<property>
+		<name> alluxio.security.authorization.permission.umask</name>
+		<value>022</value>
+		<description>The umask of creating file and directory. The initial creation permission is 777, and the difference between directory and file is 111. So for default umask value 022, the created directory has permission 755 and file has permission 644.</description>
+	</property>
+	<property>
+		<name> alluxio.security.group.mapping.cache.timeout</name>
+		<value>1min</value>
+		<description>Time for cached group mapping to expire.</description>
+	</property>
+	<property>
+		<name> alluxio.security.group.mapping.class</name>
+		<value>alluxio.security.group.provider.ShellBasedUnixGroupsMapping</value>
+		<description>The class to provide user-to-groups mapping service. Master could get the various group memberships of a given user.  It must implement the interface 'alluxio.security.group.GroupMappingService'. The default implementation execute the 'groups' shell command to fetch the group memberships of a given user.</description>
+	</property>
+	<property>
+		<name> alluxio.security.login.impersonation.username</name>
+		<value>_HDFS_USER_</value>
+		<description>When alluxio.security.authentication.type is set to SIMPLE or CUSTOM, user application uses this property to indicate the IMPERSONATED user requesting Alluxio service. If it is not set explicitly, or set to _NONE_, impersonation will not be used. A special value of '_HDFS_USER_' can be specified to impersonate the hadoop client user.</description>
+	</property>
+	<property>
+		<name> alluxio.security.login.username</name>
+		<value></value>
+		<description>When alluxio.security.authentication.type is set to SIMPLE or CUSTOM, user application uses this property to indicate the user requesting Alluxio service. If it is not set explicitly, the OS login user will be used.</description>
+	</property>
+</configuration>
