@@ -37,7 +37,6 @@ To run the Docker image, there is one CLI option:
 
 One example running command is as follows:
 ```
-$ docker pull cdep/cdep:1.0
 $ ./dockerrun.sh -a hdfs,mapreduce
 ```
 Note that multiple applications should be seperated by `,`.
