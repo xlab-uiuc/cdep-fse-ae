@@ -26,9 +26,9 @@ In Proceedings of the ACM Joint European Software Engineering Conference and Sym
 
 ### 1.1 Docker Container Image
 
-We prepare a Docker container image, with which you can directly interact with the pre-built cDep.
+We prepared a Docker container image, with which you can directly interact with the pre-built cDep.
 
-The cDep Docker image can be downloaded from: https://hub.docker.com/repository/docker/cdep/cdep/
+The cDep Docker image is hosted on https://hub.docker.com/repository/docker/cdep/cdep/ (you need a docker ID to login into this webpage while you do not need that for running the following commands).
 
 To run the Docker image, there is one CLI option:
 
@@ -37,6 +37,7 @@ To run the Docker image, there is one CLI option:
 
 One example running command is as follows:
 ```
+$ docker pull cdep/cdep:1.0
 $ ./dockerrun.sh -a hdfs,mapreduce
 ```
 Note that multiple applications should be seperated by `,`.
