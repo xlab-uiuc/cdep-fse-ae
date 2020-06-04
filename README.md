@@ -10,7 +10,7 @@ cDep currently supports:
 
 <br>
 
-The repository contains **all the artifacts** (including all the code and datasets) of the paper:
+The repository contains **all the artifacts** (including all the code and datasets) of the paper
 
 * **Understanding and Discovering Software Configuration Dependencies in Cloud and Datacenter Systems** <br>
 Qingrong Chen, Teng Wang, Owolabi Legunsen, Shanshan Li, and Tianyin Xu <br>
