@@ -32,7 +32,7 @@ The cDep Docker image is hosted on https://hub.docker.com/repository/docker/cdep
 
 To run the Docker image, there is one CLI option:
 
-* `-a <arg>`: where <arg> is a comma-separated list of elements in `hdfs`, `mapreduce`, `yarn`, `hadoop_common`, 
+* `-a <arg>`: where `<arg>` is a comma-separated list of elements in `hdfs`, `mapreduce`, `yarn`, `hadoop_common`, 
                      `hadoop_tools`, `hbase`, `alluxio`, `zookeeper`, `spark`
 
 An example running command is as follows:
@@ -94,7 +94,7 @@ $ ./run.sh -a hdfs,mapreduce
  
 **All the results in the paper, including both the study dataset and the cDep results can be reproduced.**
 
-The cDep results can be reproduced by running cDep and it could take up to 2 hours:
+The cDep results can be reproduced by running cDep and it could take several hours:
 ```
 $ ./dockerrun.sh  -a  hdfs,mapreduce,yarn,hadoop_common,hadoop_tools,hbase,alluxio,zookeeper,spark
 ```
