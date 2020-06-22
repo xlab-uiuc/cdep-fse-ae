@@ -149,6 +149,11 @@ public class DataTransform extends BodyTransformer {
             }
             if(!tmp)return;
         }
+        if(cDep.demo){
+            if(!sourceMethod.getName().contains("shouldRMFailFast")){
+                return;
+            }
+        }
         IntraProcedureAnalysis intra = new IntraProcedureAnalysis(recorder, invoke,interfaces);
         intra.analyzeSootMethodIntra(sourceMethod, new HashMap<Integer, LinkedList<String>>(),returnValues,calledMethod,callingMethod);
         mappingFromVariableToConfig.clear();

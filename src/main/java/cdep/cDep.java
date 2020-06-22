@@ -17,6 +17,7 @@ import dataflow.*;
 public class cDep {
 
     public static Boolean debug = false;
+    public static Boolean demo = false;
     public static void main(String[] args) throws IOException, SAXException {
 
         CommandLineParser parser = new DefaultParser();
@@ -48,10 +49,17 @@ public class cDep {
                 .longOpt("debug")
                 .build();
 
+        Option optionE = Option.builder("demo")
+                .required(false)
+                .desc("whether to enable demo mode.")
+                .longOpt("demo")
+                .build();
+
         options.addOption(optionA);
         options.addOption(optionB);
         options.addOption(optionC);
         options.addOption(optionD);
+        options.addOption(optionE);
 
         try {
             CommandLine commandLine = parser.parse(options, args);
@@ -68,6 +76,9 @@ public class cDep {
                 debug = true;
             }
 
+            if(commandLine.hasOption("demo")){
+                demo = true;
+            }
 
             /* getting required parameters */
             /* getting option x */
@@ -111,10 +122,17 @@ public class cDep {
         String classPath = "";
         ConfigInterface interfaces = null;
 
-        for(int i=0;i<considered.length;++i){
-            String[] cfg = CheckerConfig.CONFIGS[considered[i]];
+        if(!demo) {
+            for (int i = 0; i < considered.length; ++i) {
+                String[] cfg = CheckerConfig.CONFIGS[considered[i]];
+                classPath = classPath + CheckerConfig.getClassPath(cfg);
+                srcPaths.addAll(CheckerConfig.getSourcePath(cfg));
+                interfaces = CheckerConfig.getInterface(cfg);
+            }
+        }else{
+            String[] cfg = CheckerConfig.CONFIGS[2];
             classPath = classPath + CheckerConfig.getClassPath(cfg);
-            srcPaths.addAll( CheckerConfig.getSourcePath(cfg));
+            srcPaths.addAll(CheckerConfig.getSourcePath(cfg));
             interfaces = CheckerConfig.getInterface(cfg);
         }
 
