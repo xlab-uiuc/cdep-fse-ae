@@ -5,7 +5,7 @@ cDep is a tool for discovering configuration dependencies both within and across
 cDep currently supports:
  
 <div align="left">
-  <img src="https://github.com/xlab-uiuc/cdep/blob/master/figure/sw_supported.png" width="750">
+  <img src="https://github.com/xlab-uiuc/cdep-fse/blob/master/figure/sw_supported.png" width="750">
 </div>
 
 <br>
@@ -21,7 +21,7 @@ In Proceedings of the ACM Joint European Software Engineering Conference and Sym
 ## 1. Building and Running cDep
 
 <div align="left">
-  <img src="https://github.com/xlab-uiuc/cdep/blob/master/figure/build.png" width="250">
+  <img src="https://github.com/xlab-uiuc/cdep-fse/blob/master/figure/build.png" width="250">
 </div>
 
 ### 1.1 Docker Container Image
@@ -87,7 +87,7 @@ $ ./run.sh -a hdfs,mapreduce
 
 ## 2. Reproducibility
 <div align="left">
-  <img src="https://github.com/xlab-uiuc/cdep/blob/master/figure/repro.png" width="150">
+  <img src="https://github.com/xlab-uiuc/cdep-fse/blob/master/figure/repro.png" width="150">
 </div>
 
 <br>
@@ -123,7 +123,7 @@ The two parameters, `mapreduce.output.fileoutputformat.compress` and `mapreduce.
 
 ## 3. Datasets
 <div align="left">
-  <img src="https://github.com/xlab-uiuc/cdep/blob/master/figure/dataset.png" width="120">
+  <img src="https://github.com/xlab-uiuc/cdep-fse/blob/master/figure/dataset.png" width="120">
 </div
  
 <br>
@@ -159,7 +159,7 @@ All the data sheets are in the format of CSV, with the first row describing the 
 The following graph shows the end-to-end workflow of cDep:
 
 <div align="left">
-  <img src="https://github.com/xlab-uiuc/cdep/blob/master/figure/cdep_overview.png" width="750">
+  <img src="https://github.com/xlab-uiuc/cdep-fse/blob/master/figure/cdep_overview.png" width="750">
 </div>
 
 <br>
