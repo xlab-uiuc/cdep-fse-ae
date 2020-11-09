@@ -12,7 +12,7 @@ cDep currently supports:
 
 The repository contains **all the artifacts** (including all the code and datasets) of the paper
 
-* **Understanding and Discovering Software Configuration Dependencies in Cloud and Datacenter Systems** <br>
+* [**Understanding and Discovering Software Configuration Dependencies in Cloud and Datacenter Systems**](https://tianyin.github.io/pub/cdep.pdf) <br>
 Qingrong Chen, Teng Wang, Owolabi Legunsen, Shanshan Li, and Tianyin Xu <br>
 In Proceedings of the ACM Joint European Software Engineering Conference and Symposium on the Foundations of Software Engineering (ESEC/FSE 2020), November 8-13, 2020 Sacramento, CA.
 
